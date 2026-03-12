@@ -1,5 +1,8 @@
 import pytest
-from playwright.sync_api import Page, sync_playwright
+from playwright.sync_api import Page
+from pathlib import Path
+
+file_path = Path(__file__).parent.parent / 'test_upload.txt'
 
 def login(page):
     page.goto('https://the-internet.herokuapp.com/login')
@@ -82,14 +85,14 @@ def test_checkbox_uncheck(page: Page):
 
 def test_file_upload(page: Page):
     page.goto('https://the-internet.herokuapp.com/upload')
-    page.set_input_files('input[type="file"]', '/app/test_upload.txt')
+    page.set_input_files('input[type="file"]', file_path)
     page.click('#file-submit')
     assert page.locator('text=File Uploaded').is_visible()
 
 
 def test_file_upload_shows_filename(page: Page):
     page.goto('https://the-internet.herokuapp.com/upload')
-    page.set_input_files('input[type="file"]', '/app/test_upload.txt')
+    page.set_input_files('input[type="file"]', file_path)
     page.click('#file-submit')
     assert page.locator('text=test_upload.txt').is_visible()
 
