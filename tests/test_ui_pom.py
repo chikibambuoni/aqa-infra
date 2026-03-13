@@ -57,3 +57,5 @@ def test_checkbox_uncheck(page: Page):
     checkbox_page.open()
     checkbox_page.uncheck(1)
     assert not checkbox_page.is_checked(1)
+
+
