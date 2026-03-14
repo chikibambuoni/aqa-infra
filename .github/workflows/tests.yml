@@ -23,8 +23,11 @@ jobs:
         with:
           python-version: "3.12"
 
+      - name: Set up uv
+        uses: astral-sh/setup-uv@v5
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: uv pip install --system -r requirements.txt
 
       - name: Install Playwright browsers
         run: playwright install chromium --with-deps

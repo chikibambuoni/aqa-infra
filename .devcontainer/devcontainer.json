@@ -1,0 +1,9 @@
+{
+	"name": "aqa-infra",
+	"build": {
+		"dockerFile": "../Dockerfile",
+		"context": ".."
+	},
+	"workspaceFolder": "/app",
+	"remoteUser": "devuser"
+}
